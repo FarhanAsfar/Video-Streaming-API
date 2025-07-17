@@ -35,7 +35,9 @@ userRouter.route("/update-account").put(verifyJWT, updateAccount)
 
 userRouter.route("/change-avatar").patch(verifyJWT, upload.single("avatar"), updateUserAvatar)
 
-userRouter.route("/change-cover-image").patch(verifyJWT, updateUserCoverImage)
+userRouter.route("/change-cover-image").patch(verifyJWT, upload.single("/coverImage"), updateUserCoverImage)
+
+
 
 
 
