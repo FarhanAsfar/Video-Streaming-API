@@ -27,7 +27,7 @@ userRouter.route("/refresh-token").post(refreshAccessToken)
 
 userRouter.route("/get-user").get(verifyJWT, getCurrentUser)
 
-userRouter.route("/get-user-channel").get(verifyJWT, getUserChannelProfile)
+userRouter.route("/get-user-channel/:username").get(verifyJWT, getUserChannelProfile)
 
 userRouter.route("/change-password").patch(verifyJWT, changeCurrentPassword)
 
