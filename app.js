@@ -1,7 +1,9 @@
 import express from "express";
 import cors from "cors"
 import cookieParser from "cookie-parser";
+
 import swaggerUi from "swagger-ui-express"
+import { apiSpec } from "./src/docs/openapi.js";
 
 import {userRouter} from "./src/routes/user.routes.js"
 import {videoRouter} from "./src/routes/video.routes.js"
