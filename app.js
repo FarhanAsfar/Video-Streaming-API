@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors"
 import cookieParser from "cookie-parser";
+import swaggerUi from "swagger-ui-express"
 
 import {userRouter} from "./src/routes/user.routes.js"
 import {videoRouter} from "./src/routes/video.routes.js"
@@ -24,6 +25,14 @@ app.use("/api/v1/users", userRouter);
 // app.use("/api/v1/video", videoRouter);
 // app.use("/api/v1/like", likeRouter);
 // app.use("/api/v1/comment", commentRouter);
+
+// Mount the Swagger UI
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(apiSpec));
+
+// Redirect root to the docs
+app.get("/", (req, res) => {
+    res.redirect('/api-docs');
+});
 
 app.use(errorHandler) //middleware to handle error response
 
