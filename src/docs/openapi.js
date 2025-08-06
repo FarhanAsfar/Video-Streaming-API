@@ -1,4 +1,4 @@
-
+import { authPaths } from "./paths/auth.swagger.js"
 
 const apiSpec = {
     openapi: "3.0.0",
@@ -28,7 +28,7 @@ const apiSpec = {
         }
     ],
     paths: {
-
+        ...authPaths, //Merge authentication paths
     },
     components: {
         securitySchemes: {
