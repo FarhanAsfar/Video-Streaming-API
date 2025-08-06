@@ -1,4 +1,6 @@
 import { authPaths } from "./paths/auth.swagger.js"
+import dotenv from "dotenv"
+dotenv.config();
 
 const apiSpec = {
     openapi: "3.0.0",
