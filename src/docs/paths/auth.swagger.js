@@ -8,12 +8,12 @@ export const authPaths = {
       requestBody: {
         required: true,
         content: {
-          "application/json": {
+          "multipart/form-data": { //Type of data the reqeust will receive
             schema: {
               type: "object",
-              required: ["username", "fullname", "email", "password"],
+              required: ["username", "fullName", "email", "password"],
               properties: {
-                fullname: {
+                fullName: {
                   type: "string",
                   example: "John Doe"
                 },
@@ -30,6 +30,11 @@ export const authPaths = {
                   type: "string",
                   format: "password",
                   example: "securePassword123"
+                },
+                avatar: {
+                  type: "string",
+                  format: "binary",
+                  description: "Avatar image for account"
                 }
               }
             }
