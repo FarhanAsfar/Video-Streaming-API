@@ -1,5 +1,6 @@
 import { authPaths } from "./paths/auth.swagger.js"
 import dotenv from "dotenv"
+import { userPaths } from "./paths/user.swagger.js";
 dotenv.config();
 
 const apiSpec = {
@@ -31,6 +32,7 @@ const apiSpec = {
     ],
     paths: {
         ...authPaths, //Merge authentication paths
+        ...userPaths,
     },
     components: {
         securitySchemes: {
