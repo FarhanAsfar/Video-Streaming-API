@@ -12,6 +12,10 @@ const apiSpec = {
     },
     servers: [
         {
+            url: "https://video-streaming-api-44j0.onrender.com/api-docs/",
+            description: "Production Server"
+        },
+        {
             url: process.env.PORT ? `http://localhost:${process.env.PORT}` : "http://localhost:3001",
             description: "Development Server"
         }
