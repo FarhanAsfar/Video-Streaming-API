@@ -35,6 +35,14 @@ const apiSpec = {
         {
             name: "Video",
             description: "Video related endpoints"
+        },
+        {
+            name: "Comments",
+            description: "Comments related endpoints"
+        },
+        {
+            name: "Likes",
+            description: "Likes related endpoints"
         }
     ],
     paths: {
