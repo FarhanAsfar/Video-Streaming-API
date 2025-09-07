@@ -8,7 +8,7 @@ export const commentPaths = {
 
       responses: {
         200: {
-          description: "Current user information",
+          description: "Comments information",
           content: {
             "application/json": {
               schema: {
@@ -23,7 +23,7 @@ export const commentPaths = {
                     properties: {
                       _id: {
                         type: "string",
-                        example: "689b7747956a121799fd41be",
+                        example: "Not worthy",
                       },
                       username: { type: "string", example: "john" },
                       email: {type: "string", example: "john@gmail.com"},
