@@ -29,9 +29,6 @@ export const commentPaths = {
                       email: {type: "string", example: "john@gmail.com"},
                       fullName: {type: "string", example: "John Doe"},
                       avatar: {type: "string", example: "image-link"},
-                      coverImage: {type: "string", example: "image-link"},
-                      watchHistory: {type:"object", example: []},
-
                     },
                   },
                   message: {
@@ -45,7 +42,7 @@ export const commentPaths = {
           },
         },
         500: {
-            description: "Could not fetch user information"
+            description: "Could not fetch user comment"
         }
       },
     },
