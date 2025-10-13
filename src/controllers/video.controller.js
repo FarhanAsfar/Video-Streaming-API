@@ -53,7 +53,7 @@ import { uploadOnCloudinary } from "../utils/cloudinary.js"
     )
  })
 
- const getVideoById = asyncHandler(async () => {
+ const getVideosByUser = asyncHandler(async () => {
     
  })
 
