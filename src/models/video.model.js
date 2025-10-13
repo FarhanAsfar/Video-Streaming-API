@@ -9,7 +9,7 @@ const videoSchema = new Schema({
     },
     thumbnail:{
         type: String,
-        required: true,
+        //required: true,
     },
     title:{
         type: String,
@@ -20,7 +20,7 @@ const videoSchema = new Schema({
     },
     duration:{
         type: Number,
-        required: true,
+        //required: true,
     },
     views:{
         type: Number,
