@@ -53,8 +53,24 @@ import { uploadOnCloudinary } from "../utils/cloudinary.js"
     )
  })
 
- const getVideosByUser = asyncHandler(async () => {
+ const getVideosByUser = asyncHandler(async (req, res) => {
+    // don't write const userId = req.params. because req.params returns an object and we need to destructure it to get only the user id. 'req.params' = {userId: "345sdfswi23"}
+
+    // thsi 'userId' should match with route declaration, like: /api/v1/video/get-users-video/:userId
+    const {userId} = req.params;
+    console.log(userId);
+
+    if(!userId){
+        throw new ApiError(400, "User-Id is required to fetch a user's videos")
+    }
     
+    const videos = await Video.find({
+        owner: userId
+    });
+
+    return res.status(200).json(
+        new ApiResponse(200, videos, "Fetched all videos")
+    );
  })
 
  const deleteVideo = asyncHandler(async () => {
@@ -64,6 +80,6 @@ import { uploadOnCloudinary } from "../utils/cloudinary.js"
 export{
     publishVideo,
     getAllVideos,
-    getVideoById,
+    getVideosByUser,
     deleteVideo,
 }
