@@ -56,13 +56,13 @@ const registerUser = asyncHandler(async (req, res) => {
     const coverImage = await uploadOnCloudinary(coverImageLocalPath)
     // To upload image from postman, select 'form-data' and change the key 'type' to 'File'.
 
-    if(!avatar){
-        throw new ApiError(400, "Failed to upload on cloudinary")
-    }
+    // if(!avatar){
+    //     throw new ApiError(400, "Failed to upload on cloudinary")
+    // }
 
     const user = await User.create({
         fullName,
-        avatar: avatar.url,
+        avatar: avatar?avatar.url : "",
         coverImage: coverImage?.url || "",
         username: username?.toString().toLowerCase(),
         email,
