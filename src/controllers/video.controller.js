@@ -73,8 +73,29 @@ import { uploadOnCloudinary } from "../utils/cloudinary.js"
     );
  })
 
- const deleteVideo = asyncHandler(async () => {
-    
+ const deleteVideo = asyncHandler(async (req, res) => {
+    const userId = req.user._id;
+    const {videoId} = req.params;
+
+    if(!videoId){
+        throw new ApiError(400, "Video Id is required to delete a video");
+    }
+
+    const video = await Video.findById(videoId);
+
+    if(!video){
+        throw new ApiError(404, "Video not found");
+    }
+
+    if(video.owner.toString() !== userId.toString()){
+        throw new ApiError(403, "You are not authorized to delete this video");
+    }
+
+    await Video.deleteOne();
+
+    return res.status(200).json(
+        new ApiResponse(200, {}, "Video deleted successfully")
+    );
  })
 
 export{
