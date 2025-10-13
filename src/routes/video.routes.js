@@ -20,7 +20,7 @@ videoRouter.route("/publish-video").post(
 
 videoRouter.route("/all-videos").get(getAllVideos);
 
-videoRouter.route("/get-video/:id").get(verifyJWT, getVideoById);
+videoRouter.route("/get-users-video/:id").get(getVideoByUserId);
 
 videoRouter.route("/delete-video/:id").delete(verifyJWT, deleteVideo);
 
