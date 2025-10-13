@@ -22,7 +22,7 @@ videoRouter.route("/all-videos").get(getAllVideos);
 
 videoRouter.route("/get-users-video/:userId").get(getVideosByUser);
 
-videoRouter.route("/delete-video/:userId").delete(verifyJWT, deleteVideo);
+videoRouter.route("/delete-video/:videoId").delete(verifyJWT, deleteVideo);
 
 
 export {videoRouter};
