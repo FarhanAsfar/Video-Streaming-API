@@ -45,8 +45,12 @@ import { uploadOnCloudinary } from "../utils/cloudinary.js"
     );
  });
 
- const getAllVideos = asyncHandler(async () => {
+ const getAllVideos = asyncHandler(async (req, res) => {
+    const videos = await Video.find({});
 
+    return res.status(200).json(
+        new ApiResponse(200, videos, "All videos")
+    )
  })
 
  const getVideoById = asyncHandler(async () => {
