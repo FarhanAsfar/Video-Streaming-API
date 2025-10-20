@@ -5,7 +5,7 @@ import {addComment, deleteComment, editComment } from "../controllers/comment.co
 const commentRouter = Router();
 
 
-commentRouter.route("/add-comment/:commentId").post(verifyJWT, addComment);
+commentRouter.route("/add-comment/:videoId").post(verifyJWT, addComment);
 commentRouter.route("/delete-comment/:commentId").delete(verifyJWT, deleteComment);
 
 commentRouter.route("/edit-comment/:commentId").put(verifyJWT, editComment);
