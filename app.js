@@ -26,7 +26,7 @@ app.use(cookieParser());
 app.use("/api/v1/users", userRouter);
 app.use("/api/v1/video", videoRouter);
 // app.use("/api/v1/like", likeRouter);
-// app.use("/api/v1/comment", commentRouter);
+app.use("/api/v1/comment", commentRouter);
 
 // Mount the Swagger UI
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(apiSpec));
