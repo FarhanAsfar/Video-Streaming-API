@@ -6,9 +6,9 @@ const commentRouter = Router();
 
 
 commentRouter.route("/add-comment/:commentId").post(verifyJWT, addComment);
-commentRouter.route("/delete-comment/:id").delete(verifyJWT, deleteComment);
+commentRouter.route("/delete-comment/:commentId").delete(verifyJWT, deleteComment);
 
-commentRouter.route("/edit-comment/:id").put(verifyJWT, editComment);
+commentRouter.route("/edit-comment/:commentId").put(verifyJWT, editComment);
 
 
 
