@@ -37,8 +37,8 @@ Install Dependencies
 npm install
 ```
 
+## Create a .env file in the root directory:
 ```.env
-Create a .env file in the root directory:
 PORT=3000
 MONGODB_URI=mongodb://localhost:27017/video-streaming-api
 JWT_SECRET=your_jwt_secret
@@ -55,6 +55,5 @@ Run Locally:
 npm start
 ```
 
-```bash
-Link: https://video-streaming-api-44j0.onrender.com/
-```
+## Link
+https://video-streaming-api-44j0.onrender.com/
