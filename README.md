@@ -1,39 +1,38 @@
-Video Streaming API
-A REST API built with Node.js, Express, and MongoDB, enabling video publishing, user management, and commenting with secure JWT authentication, Cloudinary for video/thumbnail uploads. The API is deployed on Render with Swagger/OpenAPI documentation,
-Features
+# Video Streaming API
 
-RESTful Endpoints: Publish, retrieve, and delete videos (/publish-video, /all-videos, /delete-video/:videoId), manage user profiles (/get-user, /update-account), and handle comments (/add-comment/:videoId).
-Authentication: JWT-based auth with refresh tokens and secure logout.
-File Uploads: Cloudinary integration for video and thumbnail uploads (/publish-video) and user avatar/cover image updates.
-Testing: 8+ Jest/Supertest unit and integration tests ensuring 90% coverage.
-Documentation: Swagger/OpenAPI UI for interactive endpoint exploration.
-Deployment: Dockerized services deployed on Render, with CI/CD via GitHub Actions.
-Scalability: Handles 100+ concurrent users, optimized with MongoDB indexing.
+A production-ready REST API built with Node.js, Express, and MongoDB, enabling video publishing, user management, and commenting with secure JWT authentication, Cloudinary for video/thumbnail uploads, and comprehensive testing with Jest/Supertest. The API is Dockerized, deployed on Render with Swagger/OpenAPI documentation, and uses GitHub Actions for CI/CD, supporting 100+ concurrent users with 90% test coverage.
 
-Tech Stack
+## Features
+- **RESTful Endpoints**: Publish, retrieve, and delete videos (`/publish-video`, `/all-videos`, `/delete-video/:videoId`), manage user profiles (`/get-user`, `/update-account`), and handle comments (`/add-comment/:videoId`).
+- **Authentication**: JWT-based auth with refresh tokens and secure logout.
+- **File Uploads**: Cloudinary integration for video and thumbnail uploads (`/publish-video`) and user avatar/cover image updates.
+- **Testing**: 8+ Jest/Supertest unit and integration tests ensuring 90% coverage.
+- **Documentation**: Swagger/OpenAPI UI for interactive endpoint exploration.
+- **Deployment**: Dockerized services deployed on Render, with CI/CD via GitHub Actions.
+- **Scalability**: Handles 100+ concurrent users, optimized with MongoDB indexing.
 
-Languages: JavaScript
-Frameworks: Node.js, Express
-Database: MongoDB (Mongoose)
-Auth: JWT
-File Storage: Cloudinary
-Testing: Jest, Supertest
-Documentation: Swagger/OpenAPI
-DevOps: Docker, GitHub Actions, Render
+## Tech Stack
+- **Languages**: JavaScript
+- **Frameworks**: Node.js, Express
+- **Database**: MongoDB (Mongoose)
+- **Auth**: JWT
+- **File Storage**: Cloudinary
+- **Testing**: Jest, Supertest
+- **Documentation**: Swagger/OpenAPI
+- **DevOps**: Docker, GitHub Actions, Render
 
-Installation
-Prerequisites
+## Installation
+### Prerequisites
+- Node.js v20+
+- MongoDB (local or Atlas)
+- Cloudinary account
+- Docker (optional for containerized setup)
 
-Node.js v20+
-MongoDB (local or Atlas)
-Cloudinary account
-Docker (optional for containerized setup)
-
-Steps
-
-Clone the Repository
-git clone https://github.com/FarhanAsfar/video-streaming-api.git
-cd video-streaming-api
+### Steps
+1. **Clone the Repository**
+   ```bash
+   git clone https://github.com/FarhanAsfar/video-streaming-api.git
+   cd video-streaming-api
 
 
 Install Dependencies
@@ -182,4 +181,8 @@ Explore all endpoints via Swagger at https://video-streaming-api-44j0.onrender.c
 Deployment
 
 Live Demo: https://video-streaming-api-44j0.onrender.com/
-Docker Image: Docker Hub URL (replace with actual URL)
+Docker Image: https://hub.docker.com/r/arnob21/video-streaming-api (replace with actual URL)
+CI/CD: Automated builds and deployments via GitHub Actions. See .github/workflows/build.yml and .github/workflows/deploy.yml.
+
+
+
