@@ -25,19 +25,19 @@ A REST API built with Node.js, Express, and MongoDB, enabling video publishing, 
 - Cloudinary account
 - Docker (optional for containerized setup)
 
-### Steps
- **Clone the Repository**
+## Steps
+ ### Clone the Repository
    ```bash
    git clone https://github.com/FarhanAsfar/video-streaming-api.git
    cd video-streaming-api
-    ```
+   ```
 
-Install Dependencies
-```bash
-npm install
-```
+   ### Install Dependencies
+   ```bash
+   npm install
+   ```
 
-## Create a .env file in the root directory:
+### Create a .env file in the root directory:
 ```.env
 PORT=3000
 MONGODB_URI=mongodb://localhost:27017/video-streaming-api
