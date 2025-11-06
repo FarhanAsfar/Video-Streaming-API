@@ -1,4 +1,4 @@
-# Video Streaming API
+# Video Publishing API
 
 A REST API built with Node.js, Express, and MongoDB, enabling video publishing, user management, and commenting with secure JWT authentication, Cloudinary for video/thumbnail uploads. The API is deployed on Render with Swagger/OpenAPI documentation.
 
