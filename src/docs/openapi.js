@@ -9,13 +9,13 @@ dotenv.config();
 const apiSpec = {
     openapi: "3.0.0",
     info: {
-        title: "Video Stream API",
+        title: "Video Publishing API",
         version: "1.0.0",
         description: "Video upload and managing api"
     },
     servers: [
         {
-            url: "https://video-streaming-api-44j0.onrender.com/api-docs/",
+            url: "https://video-streaming-api-44j0.onrender.com",
             description: "Production Server"
         },
         {
@@ -40,10 +40,10 @@ const apiSpec = {
             name: "Comments",
             description: "Comments related endpoints"
         },
-        {
-            name: "Likes",
-            description: "Likes related endpoints"
-        }
+        // {
+        //     name: "Likes",
+        //     description: "Likes related endpoints"
+        // }
     ],
     paths: {
         ...authPaths, //Merge authentication paths

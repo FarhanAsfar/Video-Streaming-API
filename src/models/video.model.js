@@ -9,7 +9,7 @@ const videoSchema = new Schema({
     },
     thumbnail:{
         type: String,
-        required: true,
+        //required: true,
     },
     title:{
         type: String,
@@ -19,8 +19,8 @@ const videoSchema = new Schema({
         type: String,
     },
     duration:{
-        type: Number,
-        required: true,
+        type: String,
+        //required: true,
     },
     views:{
         type: Number,
@@ -33,8 +33,9 @@ const videoSchema = new Schema({
     owner:{
         type: Schema.Types.ObjectId,
         ref: "User",
+        required: true,
     },
-
+    
 }, {timestamps: true});
 
 

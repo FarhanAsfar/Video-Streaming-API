@@ -34,7 +34,7 @@ export const authPaths = {
                 avatar: {
                   type: "string",
                   format: "binary",
-                  description: "Avatar image for account"
+                  description: "Avatar image for user account"
                 }
               }
             }

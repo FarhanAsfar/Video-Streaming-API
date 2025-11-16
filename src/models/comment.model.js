@@ -1,11 +1,11 @@
 import mongoose, {Schema} from "mongoose";
 
 const commentSchema = new mongoose.Schema({
-    content: {
+    comment: {
         type: String,
         required: true,
     },
-    video: {
+    videoId: {
         type: Schema.Types.ObjectId,
         ref: 'Video',
     },
