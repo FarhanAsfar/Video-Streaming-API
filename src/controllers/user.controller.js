@@ -235,25 +235,26 @@ const getCurrentUser = asyncHandler(async (req, res) => {
 })
 
 const updateAccount = asyncHandler(async (req, res) => {
-    const {fullName, email} = req.body;
+    const {username, email} = req.body;
 
-    if(!fullName && !email){
+    if(!username && !email){
         throw new ApiError(400, "Nothing changed")
     }
 
-    const user = User.findByIdAndUpdate(
+    const user = await User.findByIdAndUpdate(
         req.user?._id,
         {
             $set: {
-                fullName,
+                username,
                 email,   
             }
         },
         {new: true}
     ).select("-password")
+    // console.log(user);
 
     return res.status(200)
-    .json(new ApiResponse(200, user, "Accound Updated!"))
+    .json(new ApiResponse(200, user, "Account Updated!"))
 })
 
 const updateUserAvatar = asyncHandler(async (req, res) => {
