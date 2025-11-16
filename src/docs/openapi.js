@@ -9,7 +9,7 @@ dotenv.config();
 const apiSpec = {
     openapi: "3.0.0",
     info: {
-        title: "Video Stream API",
+        title: "Video Publishing API",
         version: "1.0.0",
         description: "Video upload and managing api"
     },
