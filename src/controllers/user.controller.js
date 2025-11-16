@@ -241,7 +241,7 @@ const updateAccount = asyncHandler(async (req, res) => {
         throw new ApiError(400, "Nothing changed")
     }
 
-    const user = User.findByIdAndUpdate(
+    const user = await User.findByIdAndUpdate(
         req.user?._id,
         {
             $set: {
@@ -251,9 +251,10 @@ const updateAccount = asyncHandler(async (req, res) => {
         },
         {new: true}
     ).select("-password")
+    // console.log(user);
 
     return res.status(200)
-    .json(new ApiResponse(200, user, "Accound Updated!"))
+    .json(new ApiResponse(200, user, "Account Updated!"))
 })
 
 const updateUserAvatar = asyncHandler(async (req, res) => {
