@@ -20,6 +20,9 @@ import { uploadOnCloudinary } from "../utils/cloudinary.js"
     if(!videoLocalPath){
         throw new ApiError(400, "Video file is required");
     }
+    if(!thumbnailLocalPath){
+        throw new ApiError(400, "Thumbnail file is required");
+    }
 
     //uploading video and thumbnail on cloudinary
     const video = await uploadOnCloudinary(videoLocalPath);
