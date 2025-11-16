@@ -237,7 +237,7 @@ const getCurrentUser = asyncHandler(async (req, res) => {
 const updateAccount = asyncHandler(async (req, res) => {
     const {username, email} = req.body;
 
-    if(!fullName && !email){
+    if(!username && !email){
         throw new ApiError(400, "Nothing changed")
     }
 
