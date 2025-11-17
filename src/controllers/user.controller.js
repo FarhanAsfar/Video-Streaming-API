@@ -206,7 +206,7 @@ const changeCurrentPassword = asyncHandler(async (req, res) => {
     const isPassword = await user.isPassword(oldPassword);
 
     if(!isPassword){
-        throw new ApiError(400, "Invalid Password");
+        throw new ApiError(400, "Old password is not correct");
     }
 
     user.password = newPassword;
@@ -217,21 +217,21 @@ const changeCurrentPassword = asyncHandler(async (req, res) => {
 
 })
 
-const getCurrentUser = asyncHandler(async (req, res) => {
-    const user = req.user; //set req.user=user in 'auth' middleware
+const getAllUsers = asyncHandler(async (req, res) => {
+    // const user = req.user; //set req.user=user in 'auth' middleware
 
-    return res.status(200)
-    .json(new ApiResponse(200, {user}, "Fetched current user"))
+    // return res.status(200)
+    // .json(new ApiResponse(200, {user}, "Fetched current user info"))
 
 
     //to get all users
-    // const user = await User.find({});
-    // res.status(200).json({
-    //     user: user.map(user => ({
-    //         fullName: user.fullName,
-    //         email: user.email,
-    //     }))
-    // })
+    const user = await User.find({});
+    res.status(200).json({
+        user: user.map(user => ({
+            fullName: user.fullName,
+            email: user.email,
+        }))
+    })
 })
 
 const updateAccount = asyncHandler(async (req, res) => {
@@ -264,7 +264,7 @@ const updateUserAvatar = asyncHandler(async (req, res) => {
         throw new ApiError(400, "Avatar is missing")
     }
 
-    const avatar = uploadOnCloudinary(avatarLocalPath)
+    const avatar = await uploadOnCloudinary(avatarLocalPath)
 
     if(!avatar.url) {
         throw new ApiError(400, "Could not upload avatar");
@@ -282,7 +282,7 @@ const updateUserAvatar = asyncHandler(async (req, res) => {
 
     return res.status(200)
     .json(
-        new ApiResponse(200, user, "Avatar updated")
+        new ApiResponse(200, user, "Avatar updated succesfully")
     )
 })
 
@@ -293,7 +293,7 @@ const updateUserCoverImage = asyncHandler(async (req, res) => {
         throw new ApiError(400, "Avatar is missing")
     }
 
-    const coverImage = uploadOnCloudinary(coverImageLocalPath)
+    const coverImage = await uploadOnCloudinary(coverImageLocalPath)
 
     if(!coverImage.url) {
         throw new ApiError(400, "Could not upload cover image");
@@ -444,7 +444,7 @@ export {
     logoutUser,
     refreshAccessToken,
     changeCurrentPassword,
-    getCurrentUser,
+    getAllUsers,
     updateAccount,
     updateUserAvatar,
     updateUserCoverImage,
