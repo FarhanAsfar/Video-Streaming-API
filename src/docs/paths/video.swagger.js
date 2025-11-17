@@ -57,4 +57,117 @@ export const videoPaths = {
       },
     },
   },
+  "/api/v1/video/delete-video/{videoId}": {
+  delete: {
+    tags: ["Video"],
+    summary: "Delete a video",
+    description: "Delete a video by ID. Only the video owner can delete their own videos.",
+    security: [{ bearerAuth: [] }],
+    parameters: [
+      {
+        name: "videoId",
+        in: "path",
+        required: true,
+        description: "ID of the video to delete",
+        schema: {
+          type: "string",
+          example: "689b7747956a121799fd41be"
+        }
+      }
+    ],
+    responses: {
+      200: {
+        description: "Video deleted successfully",
+        content: {
+          "application/json": {
+            schema: {
+              type: "object",
+              properties: {
+                statusCode: {
+                  type: "integer",
+                  example: 200
+                },
+                data: {
+                  type: "object",
+                  example: {}
+                },
+                message: {
+                  type: "string",
+                  example: "Video deleted successfully"
+                },
+                success: {
+                  type: "boolean",
+                  example: true
+                }
+              }
+            }
+          }
+        }
+      },
+      400: {
+        description: "Video ID is required",
+        content: {
+          "application/json": {
+            schema: {
+              type: "object",
+              properties: {
+                success: {
+                  type: "boolean",
+                  example: false
+                },
+                message: {
+                  type: "string",
+                  example: "Video Id is required to delete a video"
+                }
+              }
+            }
+          }
+        }
+      },
+      403: {
+        description: "Not authorized to delete this video",
+        content: {
+          "application/json": {
+            schema: {
+              type: "object",
+              properties: {
+                success: {
+                  type: "boolean",
+                  example: false
+                },
+                message: {
+                  type: "string",
+                  example: "You are not authorized to delete this video"
+                }
+              }
+            }
+          }
+        }
+      },
+      404: {
+        description: "Video not found",
+        content: {
+          "application/json": {
+            schema: {
+              type: "object",
+              properties: {
+                success: {
+                  type: "boolean",
+                  example: false
+                },
+                message: {
+                  type: "string",
+                  example: "Video not found"
+                }
+              }
+            }
+          }
+        }
+      },
+      401: {
+        description: "Unauthorized - Invalid or missing token"
+      }
+    }
+  }
+}
 }
