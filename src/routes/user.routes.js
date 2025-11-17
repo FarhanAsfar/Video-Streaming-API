@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { loginUser, logoutUser, registerUser, refreshAccessToken, getCurrentUser, getUserChannelProfile, changeCurrentPassword, updateAccount, updateUserAvatar, updateUserCoverImage, getWatchHistory } from "../controllers/user.controller.js";
+import { loginUser, logoutUser, registerUser, refreshAccessToken, getAllUsers, getUserChannelProfile, changeCurrentPassword, updateAccount, updateUserAvatar, updateUserCoverImage, getWatchHistory } from "../controllers/user.controller.js";
 import { upload } from "../middlewares/multer.middleware.js";
 import { verifyJWT } from "../middlewares/auth.middleware.js";
 
@@ -25,21 +25,23 @@ userRouter.route("/logout").post(verifyJWT, logoutUser)
 
 userRouter.route("/refresh-token").post(refreshAccessToken)
 
-userRouter.route("/get-user").get(verifyJWT, getCurrentUser)
+
+
+userRouter.route("/get-all-user").get(getAllUsers)
 
 userRouter.route("/get-user-channel/:username").get(verifyJWT, getUserChannelProfile)
 
-userRouter.route("/change-password").patch(verifyJWT, changeCurrentPassword)
+userRouter.route("/watch-history").get(verifyJWT, getWatchHistory);
+
 
 userRouter.route("/update-account").put(verifyJWT, updateAccount)
+
+
+userRouter.route("/change-password").patch(verifyJWT, changeCurrentPassword)
 
 userRouter.route("/change-avatar").patch(verifyJWT, upload.single("avatar"), updateUserAvatar)
 
 userRouter.route("/change-cover-image").patch(verifyJWT, upload.single("/coverImage"), updateUserCoverImage)
-
-
-userRouter.route("/watch-history").get(verifyJWT, getWatchHistory);
-
 
 
 export {
