@@ -49,10 +49,10 @@ import { uploadOnCloudinary } from "../utils/cloudinary.js"
  });
 
  const getAllVideos = asyncHandler(async (req, res) => {
-    const videos = await Video.find({});
+    const videos = await Video.find({}).select("-updatedAt");
 
     return res.status(200).json(
-        new ApiResponse(200, videos, "All videos")
+        new ApiResponse(200, videos, "Fetched all videos")
     )
  })
 
