@@ -74,7 +74,7 @@ import { uploadOnCloudinary } from "../utils/cloudinary.js"
     
     const videos = await Video.find({
         owner: userId
-    });
+    }).sort({createdAt: -1});
 
     return res.status(200).json(
         new ApiResponse(200, videos, "Fetched all videos")
