@@ -1,4 +1,180 @@
 export const videoPaths = {
+    "/api/v1/video/publish-video": {
+  post: {
+    tags: ["Video"],
+    summary: "Publish a new video",
+    description: "Upload a video file with thumbnail and publish it to the platform",
+    security: [{ bearerAuth: [] }],
+    requestBody: {
+      required: true,
+      content: {
+        "multipart/form-data": {
+          schema: {
+            type: "object",
+            required: ["videoFile", "thumbnail", "title"],
+            properties: {
+              videoFile: {
+                type: "string",
+                format: "binary",
+                description: "Video file to upload (MP4, AVI, MOV, etc.)"
+              },
+              thumbnail: {
+                type: "string",
+                format: "binary",
+                description: "Thumbnail image for the video (JPEG, PNG, etc.)"
+              },
+              title: {
+                type: "string",
+                example: "My Awesome Video",
+                description: "Title of the video (required)"
+              },
+              description: {
+                type: "string",
+                example: "This is a description of my awesome video",
+                description: "Description of the video (optional)"
+              },
+              duration: {
+                type: "number",
+                example: 120,
+                description: "Duration of the video in seconds (optional)"
+              },
+              views: {
+                type: "integer",
+                example: 0,
+                description: "Initial view count (optional, defaults to 0)"
+              }
+            }
+          }
+        }
+      }
+    },
+    responses: {
+      201: {
+        description: "Video published successfully",
+        content: {
+          "application/json": {
+            schema: {
+              type: "object",
+              properties: {
+                statusCode: {
+                  type: "integer",
+                  example: 201
+                },
+                data: {
+                  type: "object",
+                  properties: {
+                    _id: {
+                      type: "string",
+                      example: "689b7747956a121799fd41be"
+                    },
+                    videoFile: {
+                      type: "string",
+                      format: "uri",
+                      example: "https://res.cloudinary.com/your-cloud/video/upload/v1234567890/video.mp4"
+                    },
+                    thumbnail: {
+                      type: "string",
+                      format: "uri",
+                      example: "https://res.cloudinary.com/your-cloud/image/upload/v1234567890/thumbnail.jpg"
+                    },
+                    title: {
+                      type: "string",
+                      example: "My Awesome Video"
+                    },
+                    description: {
+                      type: "string",
+                      example: "This is a description of my awesome video"
+                    },
+                    duration: {
+                      type: "number",
+                      example: 120
+                    },
+                    views: {
+                      type: "integer",
+                      example: 0
+                    },
+                    owner: {
+                      type: "string",
+                      example: "608f9e234567890123456789"
+                    },
+                    createdAt: {
+                      type: "string",
+                      format: "date-time",
+                      example: "2025-11-20T10:30:00.000Z"
+                    },
+                    updatedAt: {
+                      type: "string",
+                      format: "date-time",
+                      example: "2025-11-20T10:30:00.000Z"
+                    }
+                  }
+                },
+                message: {
+                  type: "string",
+                  example: "Video published successfully!"
+                },
+                success: {
+                  type: "boolean",
+                  example: true
+                }
+              }
+            }
+          }
+        }
+      },
+      400: {
+        description: "Bad request - Missing required fields or files",
+        content: {
+          "application/json": {
+            schema: {
+              type: "object",
+              properties: {
+                success: {
+                  type: "boolean",
+                  example: false
+                },
+                message: {
+                  type: "string",
+                  example: "Title is required"
+                },
+                errors: {
+                  type: "array",
+                  items: {
+                    type: "string"
+                  },
+                  example: []
+                }
+              }
+            }
+          }
+        }
+      },
+      401: {
+        description: "Unauthorized - Invalid or missing token"
+      },
+      500: {
+        description: "Server error - Failed to upload to Cloudinary",
+        content: {
+          "application/json": {
+            schema: {
+              type: "object",
+              properties: {
+                success: {
+                  type: "boolean",
+                  example: false
+                },
+                message: {
+                  type: "string",
+                  example: "Could not upload video/thumbnail on cloudinary"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+},
     "/api/v1/video/all-videos": {
     get: {
       tags: ["Video"],
@@ -169,5 +345,5 @@ export const videoPaths = {
       }
     }
   }
-}
+  },
 }
