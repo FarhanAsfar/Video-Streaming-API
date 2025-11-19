@@ -76,6 +76,12 @@ import { uploadOnCloudinary } from "../utils/cloudinary.js"
         owner: userId
     }).sort({createdAt: -1});
 
+    if(videos.length === 0){
+        return res.status(200).json(
+            new ApiResponse(200, [], "This user hasn't uploaded any videos yet")
+        );
+    }
+    
     return res.status(200).json(
         new ApiResponse(200, videos, "Fetched all videos")
     );
