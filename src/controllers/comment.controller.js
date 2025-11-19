@@ -14,7 +14,7 @@ const addComment = asyncHandler(async (req, res) => {
     if(!commenter) throw new ApiError(400, "You need to login to comment");
 
     const newComment = await Comment.create({
-        comment,
+        comment: comment.trim(), //trimming white spaces
         videoId,
         commenter,
     });
