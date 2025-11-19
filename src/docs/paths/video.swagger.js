@@ -9,7 +9,7 @@ export const videoPaths = {
         200: {
           description: "Get all videos",
           content: {
-            "application/json": {
+            "application/json": { 
               schema: {
                 type: "object",
                 properties: {
