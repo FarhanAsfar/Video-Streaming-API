@@ -22,7 +22,7 @@ const addComment = asyncHandler(async (req, res) => {
     const populateComment = await Comment.findById(newComment._id).populate('commenter', 'username avatar fullName'); //populating comments to show better result
 
     return res.status(201).json(
-        new ApiResponse(201, newComment, "Comment added successfully")
+        new ApiResponse(201, populateComment, "Comment added successfully")
     );
 })
 
