@@ -9,15 +9,17 @@ const addComment = asyncHandler(async (req, res) => {
     const {comment} = req.body;
     const commenter = req.user._id;
 
-    if(!comment) throw new ApiError(400, "Write something to comment");
+    if(!comment || comment.trim() === "") throw new ApiError(400, "Write something to comment");
     if(!videoId) throw new ApiError(400, "Video Id is required");
     if(!commenter) throw new ApiError(400, "You need to login to comment");
 
     const newComment = await Comment.create({
-        comment,
+        comment: comment.trim(), //trimming white spaces
         videoId,
         commenter,
     });
+
+    const populateComment = await Comment.findById(newComment._id).populate('commenter', 'username avatar fullName'); //populating comments to show better result
 
     return res.status(201).json(
         new ApiResponse(201, newComment, "Comment added successfully")
