@@ -24,9 +24,9 @@ app.use(cookieParser());
 
 //routes decalaration
 app.use("/api/v1/users", userRouter);
-app.use("/api/v1/video", videoRouter);
+app.use("/api/v1/videos", videoRouter);
 // app.use("/api/v1/like", likeRouter);
-app.use("/api/v1/comment", commentRouter);
+app.use("/api/v1/comments", commentRouter);
 
 // Mount the Swagger UI
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(apiSpec));

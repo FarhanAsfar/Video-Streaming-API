@@ -2,6 +2,7 @@ import { ApiError } from "../utils/ApiError.js"
 import { ApiResponse } from "../utils/ApiResponse.js"
 import { asyncHandler } from "../utils/asyncHandler.js"
 import {Video} from "../models/video.model.js"
+import { User } from "../models/user.model.js"
 import { uploadOnCloudinary } from "../utils/cloudinary.js"
  
 
@@ -63,14 +64,25 @@ import { uploadOnCloudinary } from "../utils/cloudinary.js"
     const {userId} = req.params;
     console.log(userId);
 
+    const userExists = await User.findById(userId);
+    if(!userExists){
+        throw new ApiError(404, "User not found");
+    }
+
     if(!userId){
         throw new ApiError(400, "User-Id is required to fetch a user's videos")
     }
     
     const videos = await Video.find({
         owner: userId
-    });
+    }).sort({createdAt: -1});
 
+    if(videos.length === 0){
+        return res.status(200).json(
+            new ApiResponse(200, [], "This user hasn't uploaded any videos yet")
+        );
+    }
+    
     return res.status(200).json(
         new ApiResponse(200, videos, "Fetched all videos")
     );
