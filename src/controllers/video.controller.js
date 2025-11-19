@@ -63,6 +63,11 @@ import { uploadOnCloudinary } from "../utils/cloudinary.js"
     const {userId} = req.params;
     console.log(userId);
 
+    const userExists = await User.findById(userId);
+    if(!userExists){
+        throw new ApiError(404, "User not found");
+    }
+
     if(!userId){
         throw new ApiError(400, "User-Id is required to fetch a user's videos")
     }
