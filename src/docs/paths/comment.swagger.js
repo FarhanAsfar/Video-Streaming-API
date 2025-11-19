@@ -1,9 +1,9 @@
 export const commentPaths = {
 
-  "/api/v1/comment/add-comment/:id": {
+  "/api/v1/comments/add-comment/:id": {
     get: {
       tags: ["Comments"],
-      summary: "Comments",
+      summary: "Add Comments",
       security: [{ bearerAuth: [] }],
 
       responses: {

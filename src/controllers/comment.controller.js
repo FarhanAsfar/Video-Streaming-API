@@ -9,7 +9,7 @@ const addComment = asyncHandler(async (req, res) => {
     const {comment} = req.body;
     const commenter = req.user._id;
 
-    if(!comment) throw new ApiError(400, "Write something to comment");
+    if(!comment || comment.trim() === "") throw new ApiError(400, "Write something to comment");
     if(!videoId) throw new ApiError(400, "Video Id is required");
     if(!commenter) throw new ApiError(400, "You need to login to comment");
 
